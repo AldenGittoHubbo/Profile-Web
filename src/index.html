@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="container">
+        
+        <section id="dashboard-section" class="fade-in">
+            <h1 class="main-title" data-text="Profile Web">Profile Web</h1>
+            <p style="margin-bottom: 30px;">[SELECT DATA STREAM]</p>
+            
+            <div class="card-container">
+                <div class="profile-card" onclick="openProfile('my-profile')">
+                    <div class="card-icon">👨‍💻</div>
+                    <h2>MY PROFILE</h2>
+                    <p>Nama : Muhammad Alden Arraihan Ibrahim</p>
+                    <p>NIM : 32602300059</p>
+                </div>
+
+                <div class="profile-card card-friend" onclick="openProfile('friend-profile')">
+                    <div class="card-icon">🤖</div>
+                    <h2>FRIEND'S PROFILE</h2>
+                    <p>Nama : Labiib Quth Himawan</p>
+                    <p>NIM : 32602300061</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="my-profile" class="profile-detail hidden">
+            <button class="back-btn" onclick="backToDashboard()">[< BACK]</button>
+            
+            <div class="profile-header">
+                <div class="profile-img-box">
+                    <img src="/img/img1.jpg" alt="My Photo">
+                </div>
+                <div class="profile-info">
+                    <h2>Muhammad Alden Arraihan Ibrahim</h2>
+                    <span class="role-badge">IT Enthusiast</span>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h3>>> SYSTEM BIO_</h3>
+                <p class="typing-area" id="my-bio-text" data-bio="Inisialisasi data... Saya adalah Mahasiswa Teknik Informatika angkatan 2023. Saya memiliki minat untuk mengeksplorasi bidang Cyber Security, FrontEnd Developer, dan Pengembangan Teknologi Artificial Intelligent"></p>
+            </div>
+        </section>
+
+
+        <section id="friend-profile" class="profile-detail friend-theme hidden">
+            <button class="back-btn" onclick="backToDashboard()">[< BACK]</button>
+            
+            <div class="profile-header">
+                <div class="profile-img-box">
+                    <img src="/img/img2.jpg" alt="Friend Photo">
+                </div>
+                <div class="profile-info">
+                    <h2>Labiib Quth Himawan</h2>
+                    <span class="role-badge" style="border-color: var(--neon-pink); background: rgba(255, 0, 200, 0.2);">IT Enthusiast</span>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h3 style="color: var(--neon-pink)">>> SYSTEM BIO_</h3>
+                <p class="typing-area" id="friend-bio-text" data-bio="Koneksi stabil... Teman saya ini ahli dalam mengisi role Jungle, Gold Lane, dan Midlane. Beliau ini hapal seluruh nama item Mobile Legends Beserta dan handal dalam ilmu makro dan mikro"></p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

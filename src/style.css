@@ -1,0 +1,253 @@
+/* --- CSS VARIABLES & RESET --- */
+:root {
+    --bg-dark: #050a15;
+    --neon-cyan: #00fff2;
+    --neon-pink: #ff00c8;
+    --neon-green: #39ff14;
+    --text-color: #e0e0e0;
+    --panel-bg: rgba(16, 26, 48, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+/* Efek Garis Scanline di layar */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 10;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    z-index: -1;
+}
+
+/* --- UTILITY CLASSES --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeInEffect 0.8s ease-in forwards;
+}
+
+@keyframes fadeInEffect {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* --- DASHBOARD STYLES --- */
+#dashboard-section {
+    text-align: center;
+}
+
+.main-title {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+    position: relative;
+}
+
+.card-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.profile-card {
+    background: var(--panel-bg);
+    border: 2px solid var(--neon-cyan);
+    padding: 40px;
+    width: 300px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+}
+
+.card-friend {
+    border-color: var(--neon-pink);
+}
+
+.profile-card:hover {
+    transform: scale(1.05);
+    background: rgba(0, 255, 242, 0.1);
+    box-shadow: 0 0 30px var(--neon-cyan);
+}
+
+.card-friend:hover {
+    background: rgba(255, 0, 200, 0.1);
+    box-shadow: 0 0 30px var(--neon-pink);
+}
+
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+/* --- PROFILE DETAIL STYLES --- */
+.profile-detail {
+    background: var(--panel-bg);
+    padding: 40px;
+    border: 2px solid var(--neon-cyan);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);
+}
+
+.friend-theme {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 20px rgba(255, 0, 200, 0.3);
+}
+
+.friend-theme h2, .friend-theme .back-btn {
+     color: var(--neon-pink);
+     text-shadow: 0 0 10px var(--neon-pink);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.profile-img-box {
+    width: 120px;
+    height: 120px;
+    border: 3px solid var(--neon-cyan);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.friend-theme .profile-img-box {
+     border-color: var(--neon-pink);
+     box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.profile-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%) contrast(120%);
+}
+
+.profile-info h2 {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.role-badge {
+    background: rgba(0, 255, 242, 0.2);
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: 1px solid var(--neon-cyan);
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.typing-area {
+    min-height: 80px;
+    margin-bottom: 30px;
+    border-left: 3px solid var(--neon-green);
+    padding-left: 15px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.cursor {
+    display: inline;
+    margin-left: 2px;
+}
+
+.cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--neon-green);
+}
+
+@keyframes blink { 
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.back-btn {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.friend-theme .back-btn {
+     border-color: var(--neon-pink);
+     color: var(--neon-pink);
+}
+
+.back-btn:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+ .friend-theme .back-btn:hover {
+    background: var(--neon-pink);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-pink);
+}
